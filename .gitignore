@@ -1,0 +1,17 @@
+#Build output
+bin/
+obj/
+
+#JEtbrains / rider
+.idea/
+
+# User - specific visual studio files
+*.user
+*.suo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+
