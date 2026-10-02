@@ -1,0 +1,14 @@
+[
+    {
+      "terminalId": "PC01",
+      "terminalName": "PC01",
+      "terminalIpAddress": "192.168.0.110",
+      "terminalNumber": "01"
+    },
+    {
+      "terminalId": "PC02",
+      "terminalName": "PC02",
+      "terminalIpAddress": "192.168.0.102",
+      "terminalNumber": "02"
+    }
+]
