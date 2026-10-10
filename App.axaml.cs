@@ -17,24 +17,24 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-{
-    
-    TerminalManager terminalManager = new TerminalManager();
+    if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            
+            TerminalManager terminalManager = new TerminalManager();
 
-    terminalManager.Load();
+            terminalManager.Load();
 
-    Console.WriteLine($"Number of terminals: {terminalManager.Terminals.Count}");
+            Console.WriteLine($"Number of terminals: {terminalManager.Terminals.Count}");
 
-    Console.WriteLine(
-        $"Terminal 1: {terminalManager.Terminals[0].TerminalName}");
+            Console.WriteLine(
+                $"Terminal 1: {terminalManager.Terminals[0].TerminalName}");
 
-    Console.WriteLine(
-        $"Terminal 1 IP: {terminalManager.Terminals[0].TerminalIpAddress}");
+            Console.WriteLine(
+                $"Terminal 1 IP: {terminalManager.Terminals[0].TerminalIpAddress}");
 
-    desktop.MainWindow = new MainWindow();
-} 
+            desktop.MainWindow = new MainWindow(terminalManager);
+        } 
 
-        base.OnFrameworkInitializationCompleted();
+            base.OnFrameworkInitializationCompleted();
     }
 }

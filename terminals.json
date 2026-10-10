@@ -1,14 +1,18 @@
 [
-    {
-      "terminalId": "PC01",
-      "terminalName": "PC01",
-      "terminalIpAddress": "192.168.0.110",
-      "terminalNumber": "01"
-    },
-    {
-      "terminalId": "PC02",
-      "terminalName": "PC02",
-      "terminalIpAddress": "192.168.0.102",
-      "terminalNumber": "02"
-    }
+  {
+    "TerminalId": "PC01",
+    "_terminalName": "PC01",
+    "TerminalName": "PC01",
+    "TerminalIpAddress": "192.168.0.110",
+    "TerminalNumber": "01",
+    "MonitoringEnabled": true
+  },
+  {
+    "TerminalId": "PC02",
+    "_terminalName": "PC02",
+    "TerminalName": "PC02",
+    "TerminalIpAddress": "192.168.0.102",
+    "TerminalNumber": "02",
+    "MonitoringEnabled": true
+  }
 ]

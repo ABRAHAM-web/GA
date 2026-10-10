@@ -6,7 +6,38 @@
         x:Class="GA.MainWindow"
         Title="GA"        
         >
-        <Button Name ="StartButton" Click ="StartButton_Click" Content = "Start Session"/>
+        <!-- <Button Name ="StartButton" Click ="StartButton_Click" Content = "Start Session"/> -->
+        <!-- <ItemsControl ItemsSource="{Binding Terminals}"/> -->
+        <ItemsControl ItemsSource="{Binding Terminals}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Gray" BorderThickness = "1" Padding = "10">
+                        
+                            <StackPanel>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0"
+                                            Text="{Binding TerminalName}"
+                                            FontSize="18"
+                                            FontWeight="Bold"/>
+                                    <ToggleSwitch Grid.Column="1" 
+                                            IsChecked="{Binding MonitoringEnabled}"/>
+                                </Grid>
+
+                                <TextBlock Text="{Binding TerminalIpAddress,
+                                                        StringFormat='IP: {0}'}"
+                                        Margin="0,8,0,0" />
+
+                            </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         
     <!-- Welcome to Avalonia! -->
 </Window>
