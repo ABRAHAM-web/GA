@@ -8,36 +8,64 @@
         >
         <!-- <Button Name ="StartButton" Click ="StartButton_Click" Content = "Start Session"/> -->
         <!-- <ItemsControl ItemsSource="{Binding Terminals}"/> -->
-        <ItemsControl ItemsSource="{Binding Terminals}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="Gray" BorderThickness = "1" Padding = "10">
-                        
-                            <StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Content="Relaunch"
+                HorizontalAlignment="Right"
+                Margin="10"
+                Click="RefreshButton_Click"
+                Grid.Row="0"/>
+            
+            <ItemsControl x:Name="TerminalList"
+              ItemsSource="{Binding Terminals}"
+              Grid.Row="1">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Gray" BorderThickness = "1" Padding = "10">                       
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
 
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0"
+                                                Text="{Binding TerminalName}"
+                                                FontSize="18"
+                                                FontWeight="Bold"/>
+                                        <ToggleSwitch Grid.Column="1" 
+                                                IsChecked="{Binding MonitoringEnabled}"/>
+                                    </Grid>
 
-                                    <TextBlock Grid.Column="0"
-                                            Text="{Binding TerminalName}"
-                                            FontSize="18"
-                                            FontWeight="Bold"/>
-                                    <ToggleSwitch Grid.Column="1" 
-                                            IsChecked="{Binding MonitoringEnabled}"/>
-                                </Grid>
+                                    <TextBlock Text="{Binding TerminalIpAddress,
+                                                            StringFormat='IP: {0}'}"
+                                            Margin="0,8,0,0" />
 
-                                <TextBlock Text="{Binding TerminalIpAddress,
-                                                        StringFormat='IP: {0}'}"
-                                        Margin="0,8,0,0" />
+                                </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <StackPanel x:Name="ConfigErrorPanel"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Spacing="12"
+                        IsVisible="False">
 
-                            </StackPanel>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        
+                <TextBlock Text="Configuration File Missing"
+                        FontSize="22"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"/>
+
+                <TextBlock Text="The configuration file 'terminals.json' could not be found."
+                        TextWrapping="Wrap"
+                        HorizontalAlignment="Center"/>
+
+            </StackPanel>
+        </Grid>
     <!-- Welcome to Avalonia! -->
 </Window>

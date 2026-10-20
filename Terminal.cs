@@ -20,7 +20,7 @@ public class Terminal : INotifyPropertyChanged
 
             PropertyChanged?.Invoke(
                 this,
-                new PropertyChangedEventArgs(nameof(MonitoringEnabled)));
+                new PropertyChangedEventArgs(nameof(TerminalId)));
         }
     }
     public string _terminalName { get; set; } = string.Empty;
@@ -113,5 +113,23 @@ public class Terminal : INotifyPropertyChanged
     public bool Active { get; set; }
     [JsonIgnore]
     public bool Locked { get; set; }
-   
+    //[JsonIgnore]
+    private bool _isOn = false;
+
+    [JsonIgnore]
+    public bool IsOn
+    {
+        get => _isOn;
+        set
+        {
+            if (_isOn == value)
+                return;
+
+            _isOn = value;
+
+            PropertyChanged?.Invoke(
+                this,
+                new PropertyChangedEventArgs(nameof(IsOn)));
+        }
+    }
 }

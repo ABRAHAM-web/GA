@@ -15,8 +15,14 @@ public class TerminalManager
         get { return _terminals; }
     }
 
-    public void Load()
+    public bool Load()
     {
+        if (!File.Exists("terminals.json"))
+        {
+            Console.WriteLine("ERROR: terminals.json was not found.");
+            return false;
+        }
+        
         string json = File.ReadAllText("terminals.json");
 
         var options = new JsonSerializerOptions
@@ -31,6 +37,7 @@ public class TerminalManager
         {
             terminal.PropertyChanged += Terminal_PropertyChanged;
         }
+        return true;
     }
     
 

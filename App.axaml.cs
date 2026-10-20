@@ -22,17 +22,24 @@ public partial class App : Application
             
             TerminalManager terminalManager = new TerminalManager();
 
-            terminalManager.Load();
+            bool configLoaded = terminalManager.Load();
 
-            Console.WriteLine($"Number of terminals: {terminalManager.Terminals.Count}");
+            if (configLoaded)
+            {
+                Console.WriteLine("The terminal could be loaded");
+                Console.WriteLine($"Terminal 1: {terminalManager.Terminals[0].TerminalName}");
+                Console.WriteLine($"Terminal 1 IP: {terminalManager.Terminals[0].TerminalIpAddress}");
+                Console.WriteLine($"Number of terminals: {terminalManager.Terminals.Count}");
+            } else
+            {
+                Console.Write("The terminals could not be loaded");
+            }
 
-            Console.WriteLine(
-                $"Terminal 1: {terminalManager.Terminals[0].TerminalName}");
+            
 
-            Console.WriteLine(
-                $"Terminal 1 IP: {terminalManager.Terminals[0].TerminalIpAddress}");
 
-            desktop.MainWindow = new MainWindow(terminalManager);
+
+            desktop.MainWindow = new MainWindow(terminalManager,configLoaded);
         } 
 
             base.OnFrameworkInitializationCompleted();
